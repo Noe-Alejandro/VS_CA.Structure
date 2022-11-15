@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CA.Recipe.Enterprise
+namespace CA.Recipe.Application.DS
 {
-    public class Class1
+    public class Disc
     {
+        public int ID { get; set; }
+        public string Name { get; set; }
     }
 }

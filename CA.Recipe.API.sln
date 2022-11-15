@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.Recipe.Enterprise", "CA.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.Recipe.FrameworksDrivers", "CA.Recipe.FrameworksDrivers\CA.Recipe.FrameworksDrivers.csproj", "{5B751F22-0A03-40A6-910E-C3ACB23B27C9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{1E39B8E9-910E-4AE2-BEDE-3E10C0C32182}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{97C7DA37-A7C4-4524-9E0B-DA9719B273CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +40,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{72F14494-0F67-4E52-9C10-4F7FAE71CAF2} = {97C7DA37-A7C4-4524-9E0B-DA9719B273CA}
+		{811D982D-8C4E-4D8A-ABFA-825A4CCF4A46} = {1E39B8E9-910E-4AE2-BEDE-3E10C0C32182}
+		{C893ECC6-4790-445C-92EB-CBC2E6FDAD65} = {1E39B8E9-910E-4AE2-BEDE-3E10C0C32182}
+		{5B751F22-0A03-40A6-910E-C3ACB23B27C9} = {97C7DA37-A7C4-4524-9E0B-DA9719B273CA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91D3073F-EF20-4908-80BA-D48E0AB10499}
