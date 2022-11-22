@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CA.Recipe.Application.DS
+namespace CA.Recipe.Application.Interfaces
 {
-    public class Disc
+    public interface IAmountGateway
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
     }
 }
