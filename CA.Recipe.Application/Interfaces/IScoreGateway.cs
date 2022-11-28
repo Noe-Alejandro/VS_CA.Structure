@@ -8,6 +8,6 @@ namespace CA.Recipe.Application.Interfaces
 {
     public interface IScoreGateway
     {
-        void SetScore();
+        void SetScore(int recipeId, int userId, int score);
     }
 }
