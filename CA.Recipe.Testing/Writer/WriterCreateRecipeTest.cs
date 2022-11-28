@@ -29,7 +29,7 @@ namespace CA.Recipe.Testing.Writer
                 Ingredients = new List<IngredientRequest>() { new IngredientRequest { IngredientId = 1 } },
                 Portions = portion,
                 Image = "",
-                Steps = new List<StepRequest>() { new StepRequest { Step = "Cocinar" } }
+                Steps = "Cocinar"
             })));
         }
 
@@ -45,7 +45,7 @@ namespace CA.Recipe.Testing.Writer
                 Ingredients = new List<IngredientRequest>() { new IngredientRequest { IngredientId = 1 } },
                 Portions = 1,
                 Image = "",
-                Steps = new List<StepRequest>() { new StepRequest { Step = "Cocinar" } }
+                Steps = "Cocinar"
             }));
         }
 
@@ -60,7 +60,7 @@ namespace CA.Recipe.Testing.Writer
                 Ingredients = new List<IngredientRequest>() { new IngredientRequest { IngredientId = 1 } },
                 Portions = portion,
                 Image = "",
-                Steps = new List<StepRequest>() { new StepRequest { Step = "Cocinar" } }
+                Steps = "Cocinar"
             }));
         }
 
@@ -74,7 +74,7 @@ namespace CA.Recipe.Testing.Writer
                 Ingredients = null,
                 Portions = 1,
                 Image = "",
-                Steps = new List<StepRequest>() { new StepRequest { Step = "Cocinar" } }
+                Steps = "Cocinar"
             }));
         }
 

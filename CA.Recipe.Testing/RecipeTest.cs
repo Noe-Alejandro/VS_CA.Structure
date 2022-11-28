@@ -17,14 +17,6 @@ namespace CA.Recipe.Testing
         }
 
         [Test]
-        public void AddRecipe_Test()
-        {
-            var expectedObject = new RecipeResponseDB { Id = 1, Name = "Prueba"};
-            var expectedValue = JsonConvert.SerializeObject(expectedObject);
-            Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.AddRecipe(new RecipeRequest { Name = "Prueba"})));
-        }
-
-        [Test]
         public void GetRecipe_Test()
         {
             var expectedObject = new RecipeResponseDB { Id = 1, Name = "Prueba" };

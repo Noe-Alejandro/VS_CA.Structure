@@ -44,7 +44,7 @@ namespace CA.Recipe.Application.Services
                 throw new InvalidRequestException("Ingrese un valor válido para el número de porciones");
             if (request.Ingredients == null || request.Ingredients.Count == 0)
                 throw new InvalidRequestException("Ingrese los ingredientes de la receta");
-            if (request.Steps == null || request.Steps.Count == 0)
+            if (request.Steps == null || request.Steps.Trim().Equals(""))
                 throw new InvalidRequestException("Ingrese los pasos de la receta");
         }
     }
