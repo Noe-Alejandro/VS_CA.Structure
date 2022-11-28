@@ -11,8 +11,7 @@ namespace CA.Recipe.Testing.Recipe.Mock
             return new RecipeResponseDB
             {
                 Id = 1,
-                Name = "Prueba",
-                Author = "Prueba"
+                Name = recipe.Name
             };
         }
 
@@ -20,18 +19,13 @@ namespace CA.Recipe.Testing.Recipe.Mock
         {
             return new List<RecipeResponseDB>()
             {
-                new RecipeResponseDB { Id = 1, Name = "Prueba", Author = "Prueba" }
+                new RecipeResponseDB { Id = 1, Name = "Prueba"}
             };
         }
 
         public RecipeResponseDB GetRecipe(int id)
         {
-            return new RecipeResponseDB { Id = 1, Name = "Prueba", Author = "Prueba" };
-        }
-
-        public void UpdateRecipe()
-        {
-            throw new System.NotImplementedException();
+            return new RecipeResponseDB { Id = 1, Name = "Prueba"};
         }
 
         public void FindByTitle()
@@ -42,6 +36,17 @@ namespace CA.Recipe.Testing.Recipe.Mock
         public void FindByIngredients()
         {
             throw new System.NotImplementedException();
+        }
+
+        public RecipeResponseDB UpdateRecipe(int recipeId, RecipeRequest request)
+        {
+            if (recipeId != 1)
+                return null;
+            return new RecipeResponseDB
+            {
+                Id = 1,
+                Name = request.Name
+            };
         }
     }
 }

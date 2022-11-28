@@ -12,7 +12,7 @@ namespace CA.Recipe.Application.Interfaces
         RecipeResponseDB InsertRecipe(RecipeRequest recipe);
         RecipeResponseDB GetRecipe(int id);
         List<RecipeResponseDB> GetAllRecipe();
-        void UpdateRecipe();
+        RecipeResponseDB UpdateRecipe(int recipeId, RecipeRequest request);
         void FindByTitle();
         void FindByIngredients();
         //Obtener recetas por filtro (ingredientes)

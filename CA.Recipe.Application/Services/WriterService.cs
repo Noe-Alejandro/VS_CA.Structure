@@ -1,10 +1,7 @@
-﻿using CA.Recipe.Application.Interfaces;
+﻿using CA.Recipe.Application.Exceptions;
+using CA.Recipe.Application.Interfaces;
 using CA.Recipe.Application.Services.Port;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CA.Recipe.Application.Services
 {
@@ -16,16 +13,39 @@ namespace CA.Recipe.Application.Services
             _iRecipeGateway = iRecipeGateway;
         }
 
-        public void CreateRecipe()
+        public RecipeResponse CreateRecipe(RecipeRequest request)
         {
-            _iRecipeGateway.InsertRecipe(new RecipeRequest());
-            return;
+            ValidateRequest(request);
+            RecipeResponseDB gatewayResponse = _iRecipeGateway.InsertRecipe(request);
+            return new RecipeResponse
+            {
+                Id = gatewayResponse.Id,
+                Name = gatewayResponse.Name
+            };
         }
 
-        public void EditRecipe()
+        public bool EditRecipe(int recipeId, RecipeRequest request)
         {
-            _iRecipeGateway.UpdateRecipe();
-            return;
+            RecipeResponseDB gatewayResponse = _iRecipeGateway.UpdateRecipe(recipeId, request);
+            if (gatewayResponse == null)
+                throw new EntityNotFoundException($"No se encontró la receta con el id {recipeId}");
+            ValidateRequest(request);
+            _iRecipeGateway.UpdateRecipe(recipeId, request);
+            return true;
+        }
+
+        private void ValidateRequest(RecipeRequest request)
+        {
+            if (request.Name == null || request.Name.Trim().Equals(""))
+                throw new InvalidRequestException("Ingrese un valor válido en Name");
+            if (request.Description == null || request.Description.Trim().Equals(""))
+                throw new InvalidRequestException("Ingrese un valor válido en Description");
+            if (request.Portions <= 0)
+                throw new InvalidRequestException("Ingrese un valor válido para el número de porciones");
+            if (request.Ingredients == null || request.Ingredients.Count == 0)
+                throw new InvalidRequestException("Ingrese los ingredientes de la receta");
+            if (request.Steps == null || request.Steps.Count == 0)
+                throw new InvalidRequestException("Ingrese los pasos de la receta");
         }
     }
 }

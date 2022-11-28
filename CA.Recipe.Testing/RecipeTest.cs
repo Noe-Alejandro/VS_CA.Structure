@@ -19,15 +19,15 @@ namespace CA.Recipe.Testing
         [Test]
         public void AddRecipe_Test()
         {
-            var expectedObject = new RecipeResponseDB { Id = 1, Name = "Prueba", Author = "Prueba"};
+            var expectedObject = new RecipeResponseDB { Id = 1, Name = "Prueba"};
             var expectedValue = JsonConvert.SerializeObject(expectedObject);
-            Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.AddRecipe(new RecipeRequest { Name = "Prueba", Author = "Prueba"})));
+            Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.AddRecipe(new RecipeRequest { Name = "Prueba"})));
         }
 
         [Test]
         public void GetRecipe_Test()
         {
-            var expectedObject = new RecipeResponseDB { Id = 1, Name = "Prueba", Author = "Prueba" };
+            var expectedObject = new RecipeResponseDB { Id = 1, Name = "Prueba" };
             var expectedValue = JsonConvert.SerializeObject(expectedObject);
             Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.GetRecipe(1)));
         }
@@ -37,7 +37,7 @@ namespace CA.Recipe.Testing
         {
             var expectedObject = new List<RecipeResponseDB>()
             {
-                new RecipeResponseDB { Id = 1, Name = "Prueba", Author = "Prueba" }
+                new RecipeResponseDB { Id = 1, Name = "Prueba" }
             };
             var expectedValue = JsonConvert.SerializeObject(expectedObject);
             Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.GetAllRecipe()));

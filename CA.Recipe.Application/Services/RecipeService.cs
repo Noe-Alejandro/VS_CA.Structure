@@ -18,8 +18,7 @@ namespace CA.Recipe.Application.Services
             return new RecipeResponse
             {
                 Id = gatewayResponse.Id,
-                Name = gatewayResponse.Name,
-                Author = gatewayResponse.Author
+                Name = gatewayResponse.Name
             };
         }
 
@@ -29,8 +28,7 @@ namespace CA.Recipe.Application.Services
             return new RecipeResponse
             {
                 Id = gatewayResponse.Id,
-                Name = gatewayResponse.Name,
-                Author = gatewayResponse.Author
+                Name = gatewayResponse.Name
             };
         }
 
@@ -43,8 +41,7 @@ namespace CA.Recipe.Application.Services
                 lstRecipe.Add(new RecipeResponse
                 {
                     Id = gatewayResponse[i].Id,
-                    Name = gatewayResponse[i].Name,
-                    Author = gatewayResponse[i].Author
+                    Name = gatewayResponse[i].Name
                 });
             }
             return lstRecipe;

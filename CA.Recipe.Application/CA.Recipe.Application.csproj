@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\EntityNotFoundException.cs" />
+    <Compile Include="Exceptions\InvalidRequestException.cs" />
     <Compile Include="Interfaces\IAmountGateway.cs" />
     <Compile Include="Interfaces\IIngredient.cs" />
     <Compile Include="Interfaces\IRecipeGateway.cs" />
