@@ -17,4 +17,8 @@
     <ProjectReference Include="..\CA.Recipe.Application\CA.Recipe.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Login\Mock\" />
+  </ItemGroup>
+
 </Project>

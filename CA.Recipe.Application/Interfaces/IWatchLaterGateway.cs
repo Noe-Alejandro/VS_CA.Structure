@@ -8,6 +8,6 @@ namespace CA.Recipe.Application.Interfaces
 {
     public interface IWatchLaterGateway
     {
-        void AddWatchLater();
+        void AddWatchLater(int userId, int recipeId);
     }
 }

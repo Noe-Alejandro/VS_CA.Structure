@@ -1,9 +1,4 @@
 ﻿using CA.Recipe.Application.Services.Port;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CA.Recipe.Application.Interfaces
 {
@@ -11,7 +6,5 @@ namespace CA.Recipe.Application.Interfaces
     {
         UserResponseDB InsertUser(UserRequest request);
         void LoginUser();
-        //Guardar receta
-        //Calificar receta
     }
 }

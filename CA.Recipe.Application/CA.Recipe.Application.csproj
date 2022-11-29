@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\AlreadyAddedException.cs" />
+    <Compile Include="Exceptions\EmailInUseException.cs" />
     <Compile Include="Exceptions\EntityNotFoundException.cs" />
     <Compile Include="Exceptions\InvalidRequestException.cs" />
     <Compile Include="Interfaces\IAmountGateway.cs" />

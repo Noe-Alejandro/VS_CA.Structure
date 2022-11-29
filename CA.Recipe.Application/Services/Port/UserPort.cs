@@ -21,5 +21,7 @@ namespace CA.Recipe.Application.Services.Port
     {
         public int id { get; set; }
         public string username { get; set; }
+        public string email { get; set; }
+        public int usertype { get; set; }
     }
 }
