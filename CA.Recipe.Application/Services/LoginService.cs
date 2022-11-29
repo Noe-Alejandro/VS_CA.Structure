@@ -1,4 +1,5 @@
 ﻿using CA.Recipe.Application.Interfaces;
+using CA.Recipe.Application.Services.Port;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,14 @@ namespace CA.Recipe.Application.Services
             _iUserGateway = iUserGateway;
         }
 
-        public void LoginUser()
+        public UserResponse LoginUser(UserRequest request)
         {
-            _iUserGateway.LoginUser();
-            return;
+            UserResponseDB response = _iUserGateway.LoginUser(request);
+            return new UserResponse
+            {
+                id = response.id,
+                username = response.username
+            };
         }
     }
 }

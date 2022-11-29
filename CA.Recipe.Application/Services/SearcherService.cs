@@ -1,9 +1,7 @@
-﻿using CA.Recipe.Application.Interfaces;
-using System;
+﻿using CA.Recipe.Application.Exceptions;
+using CA.Recipe.Application.Interfaces;
+using CA.Recipe.Application.Services.Port;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CA.Recipe.Application.Services
 {
@@ -15,16 +13,20 @@ namespace CA.Recipe.Application.Services
             _iRecipeGateway = iRecipeGateway;
         }
 
-        public void SearchRecipeByTitle()
+        public List<RecipeCoverResponse> SearchRecipeByTitle(string title)
         {
-            _iRecipeGateway.FindByTitle();
-            return;
+            if(title == null || title.Trim().Equals(""))
+                throw new InvalidRequestException("Ingrese el título por el que desea buscar");
+            List<RecipeCoverResponse> response = _iRecipeGateway.FindByTitle(title);
+            return response;
         }
 
-        public void SearchRecipeByIngredients()
+        public List<RecipeCoverResponse> SearchRecipeByIngredients(List<int> ingredientIdLst)
         {
-            _iRecipeGateway.FindByIngredients();
-            return;
+            if (ingredientIdLst == null || ingredientIdLst.Count == 0)
+                throw new InvalidRequestException("Ingrese al menos un ingrediente");
+            List<RecipeCoverResponse> response = _iRecipeGateway.FindByIngredients(ingredientIdLst);
+            return response;
         }
     }
 }

@@ -13,11 +13,8 @@ namespace CA.Recipe.Application.Interfaces
         RecipeDetailResponse GetRecipe(int id);
         List<RecipeCoverResponse> GetAllRecipe();
         RecipeResponseDB UpdateRecipe(int recipeId, RecipeRequest request);
-        void FindByTitle();
-        void FindByIngredients();
-        //Obtener recetas por filtro (ingredientes)
-        //Obtener rectas por título 
+        List<RecipeCoverResponse> FindByTitle(string title);
+        List<RecipeCoverResponse> FindByIngredients(List<int> ingredientIdLst);
         //Obtener receta de forma aleatoria
-        //Editar receta
     }
 }

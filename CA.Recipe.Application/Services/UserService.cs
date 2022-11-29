@@ -35,5 +35,19 @@ namespace CA.Recipe.Application.Services
             _iWatchLaterGateway.AddWatchLater(userId, recipeId);
             return;
         }
+
+        public UserResponse Login(UserRequest request)
+        {
+            if (request.email == null || request.email.Trim().Equals(""))
+                throw new InvalidRequestException("Debe ingresar un email");
+            if (request.password == null || request.password.Trim().Equals(""))
+                throw new InvalidRequestException("Debe ingresar la contraseña");
+            UserResponseDB response = _iUserGateway.LoginUser(request);
+            return new UserResponse
+            {
+                id = response.id,
+                username = response.username
+            };
+        }
     }
 }

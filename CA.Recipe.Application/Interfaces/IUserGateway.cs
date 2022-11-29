@@ -5,6 +5,6 @@ namespace CA.Recipe.Application.Interfaces
     public interface IUserGateway
     {
         UserResponseDB InsertUser(UserRequest request);
-        void LoginUser();
+        UserResponseDB LoginUser(UserRequest request);
     }
 }

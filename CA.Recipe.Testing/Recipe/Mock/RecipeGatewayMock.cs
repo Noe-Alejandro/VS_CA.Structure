@@ -45,16 +45,6 @@ namespace CA.Recipe.Testing.Recipe.Mock
             };
         }
 
-        public void FindByTitle()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void FindByIngredients()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public RecipeResponseDB UpdateRecipe(int recipeId, RecipeRequest request)
         {
             if (recipeId != 1)
@@ -64,6 +54,75 @@ namespace CA.Recipe.Testing.Recipe.Mock
                 Id = 1,
                 Name = request.Name
             };
+        }
+
+        public List<RecipeCoverResponse> FindByTitle(string title)
+        {
+            var lst = recipeDB.FindAll(x => x.Name.Contains(title));
+            List<RecipeCoverResponse> response = new List<RecipeCoverResponse>();
+            foreach (var item in lst)
+            {
+                response.Add(new RecipeCoverResponse
+                {
+                    RecipeId = item.Id, Description = item.Description, Title = item.Name, Score = item.Score
+                });
+            }
+            return response;
+        }
+
+        public List<RecipeCoverResponse> FindByIngredients(List<int> ingredientIdLst)
+        {
+            if (ingredientIdLst.FindAll(x => x <= 0).Count > 0)
+                throw new InvalidRequestException("El id de uno o varios ingredientes no es válido");
+            var lst = recipeDB.FindAll(x => x.Ingredients.FindAll(y => ingredientIdLst.Contains(y.Id)).Count > 0);
+            List<RecipeCoverResponse> response = new List<RecipeCoverResponse>();
+            foreach (var item in lst)
+            {
+                response.Add(new RecipeCoverResponse
+                {
+                    RecipeId = item.Id,
+                    Description = item.Description,
+                    Title = item.Name,
+                    Score = item.Score
+                });
+            }
+            return response;
+        }
+
+        private static List<RecipeResponseDBV2> recipeDB = new List<RecipeResponseDBV2>()
+        {
+            new RecipeResponseDBV2(){ Id = 1, Description = "Prueba", Name = "Prueba", Score = 5.0f, Ingredients =  new List<IngredientAmountDB>()
+                {
+                    new IngredientAmountDB(){ Id = 1, Name = "Tomate", Amount = 1},
+                    new IngredientAmountDB(){ Id = 2, Name = "Cebolla", Amount = 1}
+                }},
+            new RecipeResponseDBV2(){ Id = 2, Description = "Prueba2", Name = "Prueba2", Score = 4.5f, Ingredients =  new List<IngredientAmountDB>()
+                {
+                    new IngredientAmountDB(){ Id = 1, Name = "Tomate", Amount = 1},
+                    new IngredientAmountDB(){ Id = 3, Name = "Ajo", Amount = 1}
+                }},
+            new RecipeResponseDBV2(){ Id = 3, Description = "Prueba3", Name = "Prueba3", Score = 3.0f, Ingredients =  new List<IngredientAmountDB>()
+                {
+                    new IngredientAmountDB(){ Id = 1, Name = "Tomate", Amount = 1},
+                    new IngredientAmountDB(){ Id = 2, Name = "Cebolla", Amount = 1}
+                }}
+        };
+
+        public class RecipeResponseDBV2
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public List<IngredientAmountDB> Ingredients { get; set; }
+
+            public float Score { get; set; }
+        }
+
+        public class IngredientAmountDB
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public int Amount { get; set; }
         }
     }
 }
