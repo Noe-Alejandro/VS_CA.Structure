@@ -22,10 +22,38 @@ namespace CA.Recipe.Application.Services.Port
         public string Name { get; set; }
     }
 
+    public class RecipeCoverResponse
+    {
+        public int RecipeId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public float Score { get; set; }
+    }
+
+    public class RecipeDetailResponse
+    {
+        public int RecipeId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public List<IngredientAmount> Ingredients { get; set; }
+
+        public float Score { get; set; }
+    }
+
+    public class IngredientAmount
+    {
+        public string Name { get; set; }
+        public int Amount { get; set; }
+    }
+
     public class RecipeResponseDB
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
+        public List<IngredientAmount> Ingredients { get; set; }
+
+        public float Score { get; set; }
     }
 
     public class IngredientRequest

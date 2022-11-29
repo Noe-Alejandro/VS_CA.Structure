@@ -1,4 +1,5 @@
-﻿using CA.Recipe.Application.Interfaces;
+﻿using CA.Recipe.Application.Exceptions;
+using CA.Recipe.Application.Interfaces;
 using CA.Recipe.Application.Services.Port;
 using System.Collections.Generic;
 
@@ -15,17 +16,33 @@ namespace CA.Recipe.Testing.Recipe.Mock
             };
         }
 
-        public List<RecipeResponseDB> GetAllRecipe()
+        public List<RecipeCoverResponse> GetAllRecipe()
         {
-            return new List<RecipeResponseDB>()
-            {
-                new RecipeResponseDB { Id = 1, Name = "Prueba"}
+            return new List<RecipeCoverResponse>(){ 
+                new RecipeCoverResponse
+                {
+                    RecipeId = 1,
+                    Title = "Prueba",
+                    Description = "Prueba",
+                    Score = 5.00f
+                }
             };
         }
 
-        public RecipeResponseDB GetRecipe(int id)
+        public RecipeDetailResponse GetRecipe(int id)
         {
-            return new RecipeResponseDB { Id = 1, Name = "Prueba"};
+            if (id <= 0)
+                throw new InvalidRequestException("El id de la recta no es válido");
+            if (id != 1)
+                throw new EntityNotFoundException($"La recta con id {id} no se encontró");
+            return new RecipeDetailResponse
+            {
+                RecipeId = 1,
+                Title = "Prueba",
+                Description = "Prueba",
+                Ingredients = new List<IngredientAmount>() { new IngredientAmount { Name = "Cebolla", Amount = 1 } },
+                Score = 5.00f
+            };
         }
 
         public void FindByTitle()

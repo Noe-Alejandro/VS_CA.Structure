@@ -10,8 +10,8 @@ namespace CA.Recipe.Application.Interfaces
     public interface IRecipeGateway
     {
         RecipeResponseDB InsertRecipe(RecipeRequest recipe);
-        RecipeResponseDB GetRecipe(int id);
-        List<RecipeResponseDB> GetAllRecipe();
+        RecipeDetailResponse GetRecipe(int id);
+        List<RecipeCoverResponse> GetAllRecipe();
         RecipeResponseDB UpdateRecipe(int recipeId, RecipeRequest request);
         void FindByTitle();
         void FindByIngredients();

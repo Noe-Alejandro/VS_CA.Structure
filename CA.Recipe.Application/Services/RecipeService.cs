@@ -12,26 +12,31 @@ namespace CA.Recipe.Application.Services
             _iRecipeGateway = iRecipeGateway;
         }
 
-        public RecipeResponse GetRecipe(int id)
+        public RecipeDetailResponse GetRecipe(int id)
         {
             var gatewayResponse = _iRecipeGateway.GetRecipe(id);
-            return new RecipeResponse
+            return new RecipeDetailResponse
             {
-                Id = gatewayResponse.Id,
-                Name = gatewayResponse.Name
+                RecipeId = gatewayResponse.RecipeId,
+                Title = gatewayResponse.Title,
+                Description = gatewayResponse.Description,
+                Ingredients = gatewayResponse.Ingredients,
+                Score = gatewayResponse.Score
             };
         }
 
-        public List<RecipeResponse> GetAllRecipe()
+        public List<RecipeCoverResponse> GetAllRecipe()
         {
-            List<RecipeResponse> lstRecipe = new List<RecipeResponse>();
+            List<RecipeCoverResponse> lstRecipe = new List<RecipeCoverResponse>();
             var gatewayResponse = _iRecipeGateway.GetAllRecipe();
             for (var i = 0; i<gatewayResponse.Count; i++)
             {
-                lstRecipe.Add(new RecipeResponse
+                lstRecipe.Add(new RecipeCoverResponse
                 {
-                    Id = gatewayResponse[i].Id,
-                    Name = gatewayResponse[i].Name
+                    RecipeId = gatewayResponse[i].RecipeId,
+                    Title = gatewayResponse[i].Title,
+                    Description = gatewayResponse[i].Description,
+                    Score = gatewayResponse[i].Score
                 });
             }
             return lstRecipe;

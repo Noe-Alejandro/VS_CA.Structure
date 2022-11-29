@@ -20,7 +20,7 @@ namespace CA.Recipe.Testing.Writer
         [TestCase("Empanadas", "Ricas empanadas", 1)]
         public void CreateRecipe_Test(string name, string description, int portion)
         {
-            var expectedObject = new RecipeResponseDB { Id = 1, Name = "Empanadas" };
+            var expectedObject = new RecipeResponse { Id = 1, Name = "Empanadas" };
             var expectedValue = JsonConvert.SerializeObject(expectedObject);
             Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.CreateRecipe(new RecipeRequest
             {

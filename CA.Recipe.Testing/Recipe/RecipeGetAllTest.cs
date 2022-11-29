@@ -1,13 +1,18 @@
-﻿using CA.Recipe.Application.Services;
+﻿using CA.Recipe.Application.Exceptions;
+using CA.Recipe.Application.Services;
 using CA.Recipe.Application.Services.Port;
 using CA.Recipe.Testing.Recipe.Mock;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CA.Recipe.Testing
+namespace CA.Recipe.Testing.Recipe
 {
-    public class RecipeTest
+    public class RecipeGetAllTest
     {
         private RecipeService _useCase;
         [SetUp]
@@ -17,20 +22,15 @@ namespace CA.Recipe.Testing
         }
 
         [Test]
-        public void GetRecipe_Test()
-        {
-            var expectedObject = new RecipeResponseDB { Id = 1, Name = "Prueba" };
-            var expectedValue = JsonConvert.SerializeObject(expectedObject);
-            Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.GetRecipe(1)));
-        }
-
-        [Test]
         public void GetAllRecipe_Test()
         {
-            var expectedObject = new List<RecipeResponseDB>()
+            var expectedObject = new List<RecipeCoverResponse>(){ new RecipeCoverResponse
             {
-                new RecipeResponseDB { Id = 1, Name = "Prueba" }
-            };
+                RecipeId = 1,
+                Title = "Prueba",
+                Description = "Prueba",
+                Score = 5.00f
+            } };
             var expectedValue = JsonConvert.SerializeObject(expectedObject);
             Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.GetAllRecipe()));
         }
