@@ -16,7 +16,7 @@ namespace CA.Recipe.Application.Services
             _iIngredientGateway = iIngredientGateway;
         }
 
-        public List<IngredientResponse> GetAll()
+        public List<IngredientResponse> GetAllIngredients()
         {
             List<IngredientResponseDB> responseGateway = _iIngredientGateway.GetAll();
             List<IngredientResponse> response = new List<IngredientResponse>();

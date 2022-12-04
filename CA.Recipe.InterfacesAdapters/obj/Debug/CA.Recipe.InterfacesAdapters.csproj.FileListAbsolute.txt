@@ -126,3 +126,13 @@ D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\obj\Debug\C
 D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\obj\Debug\CA.Recipe.InterfacesAdapters.csproj.CopyComplete
 D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\obj\Debug\CA.Recipe.InterfacesAdapters.dll
 D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\obj\Debug\CA.Recipe.InterfacesAdapters.pdb
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\EntityFramework.dll
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\EntityFramework.SqlServer.dll
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Net.Http.Formatting.dll
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Http.dll
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\EntityFramework.xml
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\EntityFramework.SqlServer.xml
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Net.Http.Formatting.xml
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Http.xml
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Http.WebHost.dll
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Http.WebHost.xml
