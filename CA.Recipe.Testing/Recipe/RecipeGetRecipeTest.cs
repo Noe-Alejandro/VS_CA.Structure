@@ -25,8 +25,11 @@ namespace CA.Recipe.Testing.Recipe
                 RecipeId = id,
                 Title = "Prueba",
                 Description = "Prueba",
-                Ingredients = new List<IngredientAmount>() { new IngredientAmount { Name = "Cebolla", Amount = 1 } },
-                Score = 5.00f
+                Ingredients = new List<IngredientAmount>() { new IngredientAmount { Name = "Cebolla", Amount = 1 } }, 
+                Portions = 1,
+                Steps = "Vivir",
+                Score = 5.00f,
+                Author = "patojuarez"
             };
             var expectedValue = JsonConvert.SerializeObject(expectedObject);
             Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.GetRecipe(id)));

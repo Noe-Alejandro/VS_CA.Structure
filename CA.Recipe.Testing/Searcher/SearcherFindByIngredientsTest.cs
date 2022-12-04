@@ -30,6 +30,7 @@ namespace CA.Recipe.Testing.Searcher
                     RecipeId = item.Id,
                     Description = item.Description,
                     Title = item.Name,
+                    ImageUrl = item.ImageUrl,
                     Score = item.Score
                 });
             }
@@ -49,6 +50,7 @@ namespace CA.Recipe.Testing.Searcher
                     RecipeId = item.Id,
                     Description = item.Description,
                     Title = item.Name,
+                    ImageUrl = item.ImageUrl,
                     Score = item.Score
                 });
             }
@@ -64,17 +66,17 @@ namespace CA.Recipe.Testing.Searcher
 
         private static List<RecipeResponseDBV2> recipeDB = new List<RecipeResponseDBV2>()
         {
-            new RecipeResponseDBV2(){ Id = 1, Description = "Prueba", Name = "Prueba", Score = 5.0f, Ingredients =  new List<IngredientAmountDB>()
+            new RecipeResponseDBV2(){ Id = 1, Description = "Prueba", Name = "Prueba", Score = 5.0f, ImageUrl = "url", Ingredients =  new List<IngredientAmountDB>()
                 {
                     new IngredientAmountDB(){ Id = 1, Name = "Tomate", Amount = 1},
                     new IngredientAmountDB(){ Id = 2, Name = "Cebolla", Amount = 1}
                 }},
-            new RecipeResponseDBV2(){ Id = 2, Description = "Prueba2", Name = "Prueba2", Score = 4.5f, Ingredients =  new List<IngredientAmountDB>()
+            new RecipeResponseDBV2(){ Id = 2, Description = "Prueba2", Name = "Prueba2", Score = 4.5f, ImageUrl = "url", Ingredients =  new List<IngredientAmountDB>()
                 {
                     new IngredientAmountDB(){ Id = 1, Name = "Tomate", Amount = 1},
                     new IngredientAmountDB(){ Id = 3, Name = "Ajo", Amount = 1}
                 }},
-            new RecipeResponseDBV2(){ Id = 3, Description = "Prueba3", Name = "Prueba3", Score = 3.0f, Ingredients =  new List<IngredientAmountDB>()
+            new RecipeResponseDBV2(){ Id = 3, Description = "Prueba3", Name = "Prueba3", Score = 3.0f, ImageUrl = "url", Ingredients =  new List<IngredientAmountDB>()
                 {
                     new IngredientAmountDB(){ Id = 1, Name = "Tomate", Amount = 1},
                     new IngredientAmountDB(){ Id = 2, Name = "Cebolla", Amount = 1}

@@ -25,4 +25,17 @@ namespace CA.Recipe.Application.Services.Port
         public int usertype { get; set; }
         public string password { get; set; }
     }
+    public class UserGetResponse
+    {
+        public int id { get; set; }
+        public string username { get; set; }
+        public string Email { get; set; }
+    }
+
+    public class UserEditRequest
+    {
+        public string NewEmail { get; set; }
+        public string NewPassword { get; set; }
+        public string Password { get; set; }
+    }
 }

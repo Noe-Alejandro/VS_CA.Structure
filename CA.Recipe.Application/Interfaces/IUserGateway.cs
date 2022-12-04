@@ -6,5 +6,7 @@ namespace CA.Recipe.Application.Interfaces
     {
         UserResponseDB InsertUser(UserRequest request);
         UserResponseDB LoginUser(UserRequest request);
+        UserResponseDB GetUser(int userId);
+        void UpdateUser(int userId, UserEditRequest request);
     }
 }

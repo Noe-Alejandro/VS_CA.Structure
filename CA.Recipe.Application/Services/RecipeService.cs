@@ -21,7 +21,10 @@ namespace CA.Recipe.Application.Services
                 Title = gatewayResponse.Title,
                 Description = gatewayResponse.Description,
                 Ingredients = gatewayResponse.Ingredients,
-                Score = gatewayResponse.Score
+                Portions = 1,
+                Steps = gatewayResponse.Steps,
+                Score = gatewayResponse.Score,
+                Author = gatewayResponse.Author
             };
         }
 
@@ -36,6 +39,7 @@ namespace CA.Recipe.Application.Services
                     RecipeId = gatewayResponse[i].RecipeId,
                     Title = gatewayResponse[i].Title,
                     Description = gatewayResponse[i].Description,
+                    ImageUrl = gatewayResponse[i].ImageUrl,
                     Score = gatewayResponse[i].Score
                 });
             }

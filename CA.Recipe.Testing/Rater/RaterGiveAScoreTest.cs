@@ -18,10 +18,10 @@ namespace CA.Recipe.Testing.Rater
             _useCase = new RaterService(new RaterGatewayMock());
         }
 
-        [TestCase(ExpectedResult = true)]
-        public bool GiveAScore_Test()
+        [Test]
+        public void GiveAScore_Test()
         {
-            return _useCase.GiveAScore(1, 1, 1);
+            _useCase.GiveAScore(1, 1, 1);
         }
 
         [TestCase(0,1,1)]

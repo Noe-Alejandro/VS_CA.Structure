@@ -29,6 +29,7 @@ namespace CA.Recipe.Testing.Recipe
                 RecipeId = 1,
                 Title = "Prueba",
                 Description = "Prueba",
+                ImageUrl = "url",
                 Score = 5.00f
             } };
             var expectedValue = JsonConvert.SerializeObject(expectedObject);

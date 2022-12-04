@@ -19,8 +19,7 @@ namespace CA.Recipe.Application.Services
             RecipeResponseDB gatewayResponse = _iRecipeGateway.InsertRecipe(request);
             return new RecipeResponse
             {
-                Id = gatewayResponse.Id,
-                Name = gatewayResponse.Name
+                Id = gatewayResponse.Id
             };
         }
 

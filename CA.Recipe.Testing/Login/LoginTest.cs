@@ -9,11 +9,11 @@ namespace CA.Recipe.Testing.Login
 {
     public class LoginTest
     {
-        private UserService _useCase;
+        private LoginService _useCase;
         [SetUp]
         public void Setup()
         {
-            _useCase = new UserService(new UserGatewayMock(), new WatchLaterMock());
+            _useCase = new LoginService(new UserGatewayMock());
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace CA.Recipe.Testing.Login
                 username = "noeshi"
             };
             var expectedValue = JsonConvert.SerializeObject(expectedObject);
-            Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.Login(new UserRequest
+            Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.LoginUser(new UserRequest
             {
                 email = "noe@gmail.com",
                 password = "gato1"

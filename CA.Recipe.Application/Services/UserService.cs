@@ -36,18 +36,20 @@ namespace CA.Recipe.Application.Services
             return;
         }
 
-        public UserResponse Login(UserRequest request)
+        public UserGetResponse GetUser(int userId)
         {
-            if (request.email == null || request.email.Trim().Equals(""))
-                throw new InvalidRequestException("Debe ingresar un email");
-            if (request.password == null || request.password.Trim().Equals(""))
-                throw new InvalidRequestException("Debe ingresar la contraseña");
-            UserResponseDB response = _iUserGateway.LoginUser(request);
-            return new UserResponse
+            UserResponseDB responseDB = _iUserGateway.GetUser(userId);
+            return new UserGetResponse
             {
-                id = response.id,
-                username = response.username
+                id = responseDB.id,
+                username = responseDB.username,
+                Email = responseDB.email
             };
+        }
+
+        public void EditUser(int userId, UserEditRequest request)
+        {
+            _iUserGateway.UpdateUser(userId, request);
         }
     }
 }

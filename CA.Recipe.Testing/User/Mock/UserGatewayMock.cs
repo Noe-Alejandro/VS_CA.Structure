@@ -28,10 +28,27 @@ namespace CA.Recipe.Testing.User.Mock
             return user;
         }
 
+        public UserResponseDB GetUser(int userId)
+        {
+            UserResponseDB user = users.Find(x => x.id.Equals(userId));
+            return user;
+        }
+
+        public void UpdateUser(int userId, UserEditRequest request)
+        {
+            UserResponseDB user = users.Find(x => x.id.Equals(userId));
+            if(!user.password.Equals(request.Password))
+                throw new IncorrectPasswordException("Contraseña incorrecta");
+            if (users.Find(x => x.email.Equals(request.NewEmail)) != null)
+                throw new EmailInUseException("El correo se encuentra en uso por otra cuenta");
+            user.email = request.NewEmail;
+            user.password = request.NewPassword;
+        }
+
         private List<UserResponseDB> users = new List<UserResponseDB>()
         {
             new UserResponseDB(){ id = 1, username = "noeshi", email = "noe@gmail.com", usertype = 2, password="gato1"},
-            new UserResponseDB(){ id = 2, username = "noeshi2", email = "no2e@gmail.com", usertype = 2, password="gato2"},
+            new UserResponseDB(){ id = 2, username = "noeshi2", email = "noe2@gmail.com", usertype = 2, password="gato2"},
             new UserResponseDB(){ id = 3, username = "noeshi3", email = "noe3@gmail.com", usertype = 2, password = "gato3"}
         };
     }

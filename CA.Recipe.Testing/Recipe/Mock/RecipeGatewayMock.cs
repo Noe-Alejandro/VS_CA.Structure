@@ -11,8 +11,7 @@ namespace CA.Recipe.Testing.Recipe.Mock
         {
             return new RecipeResponseDB
             {
-                Id = 1,
-                Name = recipe.Name
+                Id = 1
             };
         }
 
@@ -24,6 +23,7 @@ namespace CA.Recipe.Testing.Recipe.Mock
                     RecipeId = 1,
                     Title = "Prueba",
                     Description = "Prueba",
+                    ImageUrl = "url",
                     Score = 5.00f
                 }
             };
@@ -41,7 +41,10 @@ namespace CA.Recipe.Testing.Recipe.Mock
                 Title = "Prueba",
                 Description = "Prueba",
                 Ingredients = new List<IngredientAmount>() { new IngredientAmount { Name = "Cebolla", Amount = 1 } },
-                Score = 5.00f
+                Portions = 1,
+                Steps = "Vivir",
+                Score = 5.00f,
+                Author = "patojuarez"
             };
         }
 
@@ -64,7 +67,7 @@ namespace CA.Recipe.Testing.Recipe.Mock
             {
                 response.Add(new RecipeCoverResponse
                 {
-                    RecipeId = item.Id, Description = item.Description, Title = item.Name, Score = item.Score
+                    RecipeId = item.Id, Description = item.Description, Title = item.Name, Score = item.Score, ImageUrl = item.ImageUrl
                 });
             }
             return response;
@@ -83,6 +86,7 @@ namespace CA.Recipe.Testing.Recipe.Mock
                     RecipeId = item.Id,
                     Description = item.Description,
                     Title = item.Name,
+                    ImageUrl = item.ImageUrl,
                     Score = item.Score
                 });
             }
@@ -91,17 +95,17 @@ namespace CA.Recipe.Testing.Recipe.Mock
 
         private static List<RecipeResponseDBV2> recipeDB = new List<RecipeResponseDBV2>()
         {
-            new RecipeResponseDBV2(){ Id = 1, Description = "Prueba", Name = "Prueba", Score = 5.0f, Ingredients =  new List<IngredientAmountDB>()
+            new RecipeResponseDBV2(){ Id = 1, Description = "Prueba", Name = "Prueba", Score = 5.0f, ImageUrl = "url", Ingredients =  new List<IngredientAmountDB>()
                 {
                     new IngredientAmountDB(){ Id = 1, Name = "Tomate", Amount = 1},
                     new IngredientAmountDB(){ Id = 2, Name = "Cebolla", Amount = 1}
                 }},
-            new RecipeResponseDBV2(){ Id = 2, Description = "Prueba2", Name = "Prueba2", Score = 4.5f, Ingredients =  new List<IngredientAmountDB>()
+            new RecipeResponseDBV2(){ Id = 2, Description = "Prueba2", Name = "Prueba2", Score = 4.5f, ImageUrl = "url", Ingredients =  new List<IngredientAmountDB>()
                 {
                     new IngredientAmountDB(){ Id = 1, Name = "Tomate", Amount = 1},
                     new IngredientAmountDB(){ Id = 3, Name = "Ajo", Amount = 1}
                 }},
-            new RecipeResponseDBV2(){ Id = 3, Description = "Prueba3", Name = "Prueba3", Score = 3.0f, Ingredients =  new List<IngredientAmountDB>()
+            new RecipeResponseDBV2(){ Id = 3, Description = "Prueba3", Name = "Prueba3", Score = 3.0f, ImageUrl = "url", Ingredients =  new List<IngredientAmountDB>()
                 {
                     new IngredientAmountDB(){ Id = 1, Name = "Tomate", Amount = 1},
                     new IngredientAmountDB(){ Id = 2, Name = "Cebolla", Amount = 1}
@@ -114,6 +118,7 @@ namespace CA.Recipe.Testing.Recipe.Mock
             public string Name { get; set; }
             public string Description { get; set; }
             public List<IngredientAmountDB> Ingredients { get; set; }
+            public string ImageUrl { get; set; }
 
             public float Score { get; set; }
         }
