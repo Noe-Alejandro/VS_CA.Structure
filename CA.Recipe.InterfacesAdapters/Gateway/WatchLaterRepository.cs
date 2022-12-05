@@ -1,4 +1,5 @@
-﻿using CA.Recipe.Application.Interfaces;
+﻿using CA.Recipe.Application.Exceptions;
+using CA.Recipe.Application.Interfaces;
 using CA.Recipe.InterfacesAdapters.Data.Recipe;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,15 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
 
         public void AddWatchLater(int userId, int recipeId)
         {
+            var watchLaterExist = _uowRecipe.WatchLaterRepository.Get(x => x.UserId.Equals(userId) && x.RecipeId.Equals(recipeId)).FirstOrDefault();
+            if (watchLaterExist != null)
+                return;
             _uowRecipe.WatchLaterRepository.Insert(new WatchLater
             {
                 UserId = userId,
                 RecipeId = recipeId
             });
+            _uowRecipe.Save();
         }
     }
 }

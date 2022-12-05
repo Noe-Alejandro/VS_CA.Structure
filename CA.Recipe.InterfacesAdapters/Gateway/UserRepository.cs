@@ -19,11 +19,20 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
 
         public UserResponseDB GetUser(int userId)
         {
-            throw new NotImplementedException();
+            var user = _uowRecipe.UserRepository.Get(x => x.UserId.Equals(userId)).FirstOrDefault();
+            return new UserResponseDB
+            {
+                id = user.UserId,
+                username = user.UserName,
+                email = user.Email
+            };
         }
 
         public UserResponseDB InsertUser(UserRequest request)
         {
+            var userDB = _uowRecipe.UserRepository.Get(x => x.Email.Equals(request.email)).FirstOrDefault();
+            if (userDB != null)
+                throw new AlreadyAddedException("Ya se encuentra en uso el correo proporcionado");
             var user = new User
             {
                 UserName = request.username,
@@ -56,7 +65,13 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
 
         public void UpdateUser(int userId, UserEditRequest request)
         {
-            throw new NotImplementedException();
+            var user = _uowRecipe.UserRepository.Get(x => x.UserId.Equals(userId)).FirstOrDefault();
+            var emailInUse = _uowRecipe.UserRepository.Get(x => x.Email.Equals(request.NewEmail) && !x.UserId.Equals(userId)).FirstOrDefault();
+            if (emailInUse != null)
+                throw new EmailInUseException("El nuevo correo ya se encuentra en uso por otro usuario");
+            user.Email = request.NewEmail;
+            user.Password = request.NewPassword;
+            _uowRecipe.Save();
         }
     }
 }

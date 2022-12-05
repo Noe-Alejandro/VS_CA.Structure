@@ -20,7 +20,7 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
 
         [HttpPost]
         [Route("~/api/User/Register")]
-        public IHttpActionResult GetAllIngredient(UserRequest request)
+        public IHttpActionResult RegisterUser(UserRequest request)
         {
             try
             {
@@ -28,9 +28,77 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
 
                 return Content(HttpStatusCode.Created, response);
             }
+            catch (AlreadyAddedException e)
+            {
+                return Content(HttpStatusCode.Forbidden, e.Message);
+            }
             catch (InvalidRequestException e)
             {
                 return Content(HttpStatusCode.BadRequest, e.Message);
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("~/api/User/WatchLater")]
+        public IHttpActionResult AddWatchLater(WatchLaterRequest request)
+        {
+            try
+            {
+                _service.AddWatchLater(request.userId, request.recipeId);
+
+                return Content(HttpStatusCode.Created, "Created");
+            }
+            catch (InvalidRequestException e)
+            {
+                return Content(HttpStatusCode.BadRequest, e.Message);
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("~/api/User/{id}")]
+        public IHttpActionResult GetUser(int id)
+        {
+            try
+            {
+                var response = _service.GetUser(id);
+
+                return Content(HttpStatusCode.OK, response);
+            }
+            catch (InvalidRequestException e)
+            {
+                return Content(HttpStatusCode.BadRequest, e.Message);
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("~/api/User/{id}")]
+        public IHttpActionResult UpdateUser(int id, UserEditRequest request)
+        {
+            try
+            {
+                _service.EditUser(id, request);
+
+                return Ok();
+            }
+            catch (InvalidRequestException e)
+            {
+                return Content(HttpStatusCode.BadRequest, e.Message);
+            }
+            catch (EmailInUseException e)
+            {
+                return Content(HttpStatusCode.Forbidden, e.Message);
             }
             catch (Exception e)
             {

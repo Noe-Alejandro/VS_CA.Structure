@@ -49,6 +49,12 @@ namespace CA.Recipe.Application.Services
 
         public void EditUser(int userId, UserEditRequest request)
         {
+            if (request.Password == null || request.Password.Trim().Equals(""))
+                throw new InvalidRequestException("Debe ingresarse una contraseña");
+            if (request.NewEmail == null || request.NewEmail.Trim().Equals(""))
+                throw new InvalidRequestException("Debe ingresarse un email");
+            if (request.NewPassword == null || request.NewPassword.Trim().Equals(""))
+                throw new InvalidRequestException("Debe ingresarse una contraseña");
             _iUserGateway.UpdateUser(userId, request);
         }
     }
