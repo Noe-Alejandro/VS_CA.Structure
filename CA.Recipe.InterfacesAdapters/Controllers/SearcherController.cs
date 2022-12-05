@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CA.Recipe.InterfacesAdapters.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SearcherController : ApiController
     {
         private SearcherService _service;

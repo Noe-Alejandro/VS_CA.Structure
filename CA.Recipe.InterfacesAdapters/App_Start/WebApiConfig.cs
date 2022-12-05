@@ -11,7 +11,7 @@ namespace CA.Recipe.InterfacesAdapters.App_Start
     {
         public static void Register(HttpConfiguration config)
         {
-
+            config.EnableCors();
             // Rutas de API web
             config.MapHttpAttributeRoutes();
 

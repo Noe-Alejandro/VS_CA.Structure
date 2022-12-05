@@ -136,3 +136,6 @@ D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.
 D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Http.xml
 D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Http.WebHost.dll
 D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Http.WebHost.xml
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Cors.dll
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Http.Cors.dll
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.Web.Http.Cors.xml

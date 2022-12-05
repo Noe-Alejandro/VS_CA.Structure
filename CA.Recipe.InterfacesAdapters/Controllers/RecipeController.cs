@@ -4,9 +4,11 @@ using CA.Recipe.InterfacesAdapters.Gateway;
 using System;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CA.Recipe.InterfacesAdapters.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RecipeController : ApiController
     {
         private RecipeService _service;
