@@ -9,8 +9,10 @@
 
 namespace CA.Recipe.InterfacesAdapters.Data.Recipe
 {
+    using System;
     using System.Data.Entity;
-
+    using System.Data.Entity.Infrastructure;
+    
     public partial class RecipeContext : DbContext
     {
         public RecipeContext()
@@ -20,6 +22,7 @@ namespace CA.Recipe.InterfacesAdapters.Data.Recipe
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Amount> Amount { get; set; }

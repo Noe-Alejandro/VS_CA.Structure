@@ -140,6 +140,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngredientController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RaterController.cs" />
+    <Compile Include="Controllers\RecipeController.cs" />
+    <Compile Include="Controllers\SearcherController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WriterController.cs" />
     <Compile Include="Data\GenericRepository.cs" />
     <Compile Include="Data\Recipe\Amount.cs">
       <DependentUpon>RecipeContext.tt</DependentUpon>
@@ -176,6 +182,10 @@
       <DependentUpon>RecipeContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Gateway\IngredientRepository.cs" />
+    <Compile Include="Gateway\RecipeRepository.cs" />
+    <Compile Include="Gateway\ScoreRepository.cs" />
+    <Compile Include="Gateway\UserRepository.cs" />
+    <Compile Include="Gateway\WatchLaterRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -240,6 +250,12 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Ingredient\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\Rater\" />
+    <Folder Include="Views\Recipe\" />
+    <Folder Include="Views\Searcher\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\Writer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -57,6 +57,7 @@
     <Compile Include="Services\LoginService.cs" />
     <Compile Include="Services\Port\IngredientPort.cs" />
     <Compile Include="Services\Port\RecipePort.cs" />
+    <Compile Include="Services\Port\ScorePort.cs" />
     <Compile Include="Services\Port\UserPort.cs" />
     <Compile Include="Services\RaterService.cs" />
     <Compile Include="Services\RecipeService.cs" />

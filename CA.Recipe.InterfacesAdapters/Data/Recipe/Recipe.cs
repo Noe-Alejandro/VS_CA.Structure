@@ -27,6 +27,8 @@ namespace CA.Recipe.InterfacesAdapters.Data.Recipe
         public string Step { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
+        public int Portion { get; set; }
+        public string ImageUrl { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Amount> Amount { get; set; }

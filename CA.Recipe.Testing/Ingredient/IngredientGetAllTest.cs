@@ -21,7 +21,7 @@ namespace CA.Recipe.Testing.Ingredient
         }
 
         [Test]
-        public void GetAllRecipe_Test()
+        public void GetAllIngredients_Test()
         {
             var ingredients = IngredientGatewayMock.ingredients;
             List<IngredientResponse> expectedObject = new List<IngredientResponse>();
@@ -34,7 +34,7 @@ namespace CA.Recipe.Testing.Ingredient
                 });
             };
             var expectedValue = JsonConvert.SerializeObject(expectedObject);
-            Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.GetAll()));
+            Assert.AreEqual(expectedValue, JsonConvert.SerializeObject(_useCase.GetAllIngredients()));
         }
     }
 }

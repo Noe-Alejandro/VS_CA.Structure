@@ -8,6 +8,7 @@ namespace CA.Recipe.Application.Services.Port
 {
     public class RecipeRequest
     {
+        public int UserId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public List<IngredientRequest> Ingredients { get; set; }
@@ -35,6 +36,7 @@ namespace CA.Recipe.Application.Services.Port
         public int RecipeId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string ImageUrl { get; set; }
         public List<IngredientAmount> Ingredients { get; set; }
         public int Portions { get; set; }
         public string Steps { get; set; }

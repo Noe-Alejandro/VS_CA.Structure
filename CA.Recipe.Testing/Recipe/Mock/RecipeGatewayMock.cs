@@ -40,6 +40,7 @@ namespace CA.Recipe.Testing.Recipe.Mock
                 RecipeId = 1,
                 Title = "Prueba",
                 Description = "Prueba",
+                ImageUrl = "url",
                 Ingredients = new List<IngredientAmount>() { new IngredientAmount { Name = "Cebolla", Amount = 1 } },
                 Portions = 1,
                 Steps = "Vivir",
@@ -51,7 +52,7 @@ namespace CA.Recipe.Testing.Recipe.Mock
         public RecipeResponseDB UpdateRecipe(int recipeId, RecipeRequest request)
         {
             if (recipeId != 1)
-                return null;
+                throw new EntityNotFoundException();
             return new RecipeResponseDB
             {
                 Id = 1,

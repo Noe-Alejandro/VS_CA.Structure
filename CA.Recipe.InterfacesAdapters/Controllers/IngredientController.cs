@@ -23,10 +23,7 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
             {
                 var response = _service.GetAllIngredients();
 
-                if (response != null)
-                    return Content(HttpStatusCode.OK, response);
-
-                return BadRequest();
+                return Content(HttpStatusCode.OK, response);
             }
             catch (Exception e)
             {

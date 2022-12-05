@@ -25,9 +25,6 @@ namespace CA.Recipe.Application.Services
 
         public bool EditRecipe(int recipeId, RecipeRequest request)
         {
-            RecipeResponseDB gatewayResponse = _iRecipeGateway.UpdateRecipe(recipeId, request);
-            if (gatewayResponse == null)
-                throw new EntityNotFoundException($"No se encontró la receta con el id {recipeId}");
             ValidateRequest(request);
             _iRecipeGateway.UpdateRecipe(recipeId, request);
             return true;

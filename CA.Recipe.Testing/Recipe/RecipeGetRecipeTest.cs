@@ -25,6 +25,7 @@ namespace CA.Recipe.Testing.Recipe
                 RecipeId = id,
                 Title = "Prueba",
                 Description = "Prueba",
+                ImageUrl = "url",
                 Ingredients = new List<IngredientAmount>() { new IngredientAmount { Name = "Cebolla", Amount = 1 } }, 
                 Portions = 1,
                 Steps = "Vivir",

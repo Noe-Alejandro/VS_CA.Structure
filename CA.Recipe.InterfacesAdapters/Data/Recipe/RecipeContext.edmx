@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RecipeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RecipeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Amount">
           <Key>
             <PropertyRef Name="AmountId" />
@@ -30,6 +30,8 @@
           <Property Name="Step" Type="text" Nullable="false" />
           <Property Name="Description" Type="text" />
           <Property Name="Title" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Portion" Type="int" Nullable="false" />
+          <Property Name="ImageUrl" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="Score">
           <Key>
@@ -179,8 +181,7 @@
             <End Role="WatchLater" EntitySet="WatchLater" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RecipeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -216,6 +217,8 @@
           <NavigationProperty Name="User" Relationship="Self.FK_Recipe_User" FromRole="Recipe" ToRole="User" />
           <NavigationProperty Name="Score" Relationship="Self.FK_Score_Recipe" FromRole="Recipe" ToRole="Score" />
           <NavigationProperty Name="WatchLater" Relationship="Self.FK_WatchLater_Recipe" FromRole="Recipe" ToRole="WatchLater" />
+          <Property Name="Portion" Type="Int32" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Score">
           <Key>
@@ -399,6 +402,8 @@
           <EntitySetMapping Name="Recipe">
             <EntityTypeMapping TypeName="RecipeModel.Recipe">
               <MappingFragment StoreEntitySet="Recipe">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Portion" ColumnName="Portion" />
                 <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Step" ColumnName="Step" />

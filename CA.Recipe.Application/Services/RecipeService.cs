@@ -20,6 +20,7 @@ namespace CA.Recipe.Application.Services
                 RecipeId = gatewayResponse.RecipeId,
                 Title = gatewayResponse.Title,
                 Description = gatewayResponse.Description,
+                ImageUrl = gatewayResponse.ImageUrl,
                 Ingredients = gatewayResponse.Ingredients,
                 Portions = 1,
                 Steps = gatewayResponse.Steps,
