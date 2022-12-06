@@ -1,4 +1,5 @@
-﻿using CA.Recipe.Application.Services;
+﻿using CA.Recipe.Application.Exceptions;
+using CA.Recipe.Application.Services;
 using CA.Recipe.Application.Services.Port;
 using CA.Recipe.InterfacesAdapters.Data.Recipe;
 using CA.Recipe.InterfacesAdapters.Gateway;
@@ -28,6 +29,10 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
                 _service.GiveAScore(request.recipeId, request.userId, request.score);
 
                 return Ok();
+            }
+            catch (InvalidRequestException e)
+            {
+                return Content(HttpStatusCode.BadRequest, e.Message);
             }
             catch (Exception e)
             {

@@ -1,4 +1,5 @@
-﻿using CA.Recipe.Application.Services;
+﻿using CA.Recipe.Application.Exceptions;
+using CA.Recipe.Application.Services;
 using CA.Recipe.InterfacesAdapters.Data.Recipe;
 using CA.Recipe.InterfacesAdapters.Gateway;
 using System;
@@ -20,7 +21,7 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
 
         [HttpGet]
         [Route("~/api/Recipe")]
-        public IHttpActionResult GetAllIngredient()
+        public IHttpActionResult GetRecipes()
         {
             try
             {
@@ -36,13 +37,17 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
 
         [HttpGet]
         [Route("~/api/Recipe/{id}")]
-        public IHttpActionResult GetAllIngredient(int id)
+        public IHttpActionResult GetRecipeById(int id)
         {
             try
             {
                 var response = _service.GetRecipe(id);
 
                 return Content(HttpStatusCode.OK, response);
+            }
+            catch (EntityNotFoundException e)
+            {
+                return Content(HttpStatusCode.BadRequest, e.Message);
             }
             catch (Exception e)
             {

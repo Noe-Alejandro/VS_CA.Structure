@@ -1,4 +1,5 @@
-﻿using CA.Recipe.Application.Services;
+﻿using CA.Recipe.Application.Exceptions;
+using CA.Recipe.Application.Services;
 using CA.Recipe.Application.Services.Port;
 using CA.Recipe.InterfacesAdapters.Data.Recipe;
 using CA.Recipe.InterfacesAdapters.Gateway;
@@ -27,7 +28,15 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
             {
                 var response = _service.LoginUser(request);
 
-                return Content(HttpStatusCode.Created, response);
+                return Content(HttpStatusCode.OK, response);
+            }
+            catch (InvalidRequestException e)
+            {
+                return Content(HttpStatusCode.BadRequest, e.Message);
+            }
+            catch (EntityNotFoundException e)
+            {
+                return Content(HttpStatusCode.Forbidden, e.Message);
             }
             catch (Exception e)
             {

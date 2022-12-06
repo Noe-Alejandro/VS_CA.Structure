@@ -20,7 +20,7 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
         {
             var watchLaterExist = _uowRecipe.WatchLaterRepository.Get(x => x.UserId.Equals(userId) && x.RecipeId.Equals(recipeId)).FirstOrDefault();
             if (watchLaterExist != null)
-                return;
+                throw new AlreadyAddedException("Ya se encuentra en tus ver más tarde");
             _uowRecipe.WatchLaterRepository.Insert(new WatchLater
             {
                 UserId = userId,

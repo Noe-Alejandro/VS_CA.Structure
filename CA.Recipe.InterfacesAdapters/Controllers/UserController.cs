@@ -30,13 +30,13 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
 
                 return Content(HttpStatusCode.Created, response);
             }
-            catch (AlreadyAddedException e)
-            {
-                return Content(HttpStatusCode.Forbidden, e.Message);
-            }
             catch (InvalidRequestException e)
             {
                 return Content(HttpStatusCode.BadRequest, e.Message);
+            }
+            catch (AlreadyAddedException e)
+            {
+                return Content(HttpStatusCode.Forbidden, e.Message);
             }
             catch (Exception e)
             {
@@ -58,6 +58,10 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
             {
                 return Content(HttpStatusCode.BadRequest, e.Message);
             }
+            catch (AlreadyAddedException e)
+            {
+                return Content(HttpStatusCode.Forbidden, e.Message);
+            }
             catch (Exception e)
             {
                 return Content(HttpStatusCode.InternalServerError, e.Message);
@@ -74,9 +78,9 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
 
                 return Content(HttpStatusCode.OK, response);
             }
-            catch (InvalidRequestException e)
+            catch (EntityNotFoundException e)
             {
-                return Content(HttpStatusCode.BadRequest, e.Message);
+                return Content(HttpStatusCode.NotFound, e.Message);
             }
             catch (Exception e)
             {
@@ -101,6 +105,10 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
             catch (EmailInUseException e)
             {
                 return Content(HttpStatusCode.Forbidden, e.Message);
+            }
+            catch (EntityNotFoundException e)
+            {
+                return Content(HttpStatusCode.NotFound, e.Message);
             }
             catch (Exception e)
             {

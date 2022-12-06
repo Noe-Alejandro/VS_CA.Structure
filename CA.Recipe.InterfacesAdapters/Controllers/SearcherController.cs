@@ -1,4 +1,5 @@
-﻿using CA.Recipe.Application.Services;
+﻿using CA.Recipe.Application.Exceptions;
+using CA.Recipe.Application.Services;
 using CA.Recipe.InterfacesAdapters.Data.Recipe;
 using CA.Recipe.InterfacesAdapters.Gateway;
 using System;
@@ -29,6 +30,10 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
 
                 return Content(HttpStatusCode.OK, response);
             }
+            catch (InvalidRequestException e)
+            {
+                return Content(HttpStatusCode.BadRequest, e.Message);
+            }
             catch (Exception e)
             {
                 return Content(HttpStatusCode.InternalServerError, e.Message);
@@ -44,6 +49,10 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
                 var response = _service.SearchRecipeByIngredients(ids);
 
                 return Content(HttpStatusCode.OK, response);
+            }
+            catch (InvalidRequestException e)
+            {
+                return Content(HttpStatusCode.BadRequest, e.Message);
             }
             catch (Exception e)
             {

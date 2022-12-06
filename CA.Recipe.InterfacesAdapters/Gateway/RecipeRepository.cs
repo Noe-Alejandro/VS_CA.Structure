@@ -20,12 +20,16 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
         {
             var all = _uowRecipe.RecipeRepository.GetAll().ToList();
             var recipes = all.FindAll(x => x.Amount.ToList().FindAll(y => ingredientIdLst.Contains(y.IngredientId)).Count >= ingredientIdLst.Count);
+            if (recipes == null)
+                return new List<RecipeCoverResponse>();
             return MapRecipes(recipes);
         }
 
         public List<RecipeCoverResponse> FindByTitle(string title)
         {
             var recipes = _uowRecipe.RecipeRepository.Get(x => x.Title.Contains(title)).ToList();
+            if (recipes == null)
+                return new List<RecipeCoverResponse>();
             return MapRecipes(recipes);
         }
 
@@ -38,6 +42,8 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
         public RecipeDetailResponse GetRecipe(int id)
         {
             var recipe = _uowRecipe.RecipeRepository.GetByID(id);
+            if (recipe == null)
+                throw new EntityNotFoundException("El id de la recta no existe en la base de datos");
             return new RecipeDetailResponse
             {
                 RecipeId = recipe.RecipeId,
@@ -85,7 +91,7 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
         {
             var recipe = _uowRecipe.RecipeRepository.GetByID(recipeId);
             if (recipe == null)
-                throw new InvalidRequestException($"No se encontró la receta con id {recipeId}");
+                throw new EntityNotFoundException($"No se encontró la receta con id {recipeId}");
             recipe.Title = request.Name;
             recipe.Description = request.Description;
             recipe.Step = request.Steps;

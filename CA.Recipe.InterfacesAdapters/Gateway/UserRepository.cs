@@ -20,6 +20,8 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
         public UserResponseDB GetUser(int userId)
         {
             var user = _uowRecipe.UserRepository.Get(x => x.UserId.Equals(userId)).FirstOrDefault();
+            if (user == null)
+                throw new EntityNotFoundException("No se encontró el usuario con el id proporcionado");
             return new UserResponseDB
             {
                 id = user.UserId,
@@ -66,6 +68,8 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
         public void UpdateUser(int userId, UserEditRequest request)
         {
             var user = _uowRecipe.UserRepository.Get(x => x.UserId.Equals(userId)).FirstOrDefault();
+            if (user == null)
+                throw new EntityNotFoundException("No se encontró el usuario con el id proporcionado");
             var emailInUse = _uowRecipe.UserRepository.Get(x => x.Email.Equals(request.NewEmail) && !x.UserId.Equals(userId)).FirstOrDefault();
             if (emailInUse != null)
                 throw new EmailInUseException("El nuevo correo ya se encuentra en uso por otro usuario");
