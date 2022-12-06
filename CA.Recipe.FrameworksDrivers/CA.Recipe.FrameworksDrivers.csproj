@@ -41,6 +41,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\GenericRepository.cs" />
+    <Compile Include="Data\Recipe\Amount.cs">
+      <DependentUpon>RecipeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Recipe\Ingredient.cs">
+      <DependentUpon>RecipeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Recipe\Recipe.cs">
+      <DependentUpon>RecipeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Recipe\RecipeContext.Context.cs">
+      <DependentUpon>RecipeContext.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\Recipe\RecipeContext.cs">
+      <DependentUpon>RecipeContext.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\Recipe\RecipeContext.Designer.cs">
+      <DependentUpon>RecipeContext.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\Recipe\Score.cs">
+      <DependentUpon>RecipeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Recipe\UoWRecipe.cs" />
+    <Compile Include="Data\Recipe\User.cs">
+      <DependentUpon>RecipeContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Recipe\WatchLater.cs">
+      <DependentUpon>RecipeContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,11 +84,31 @@
       <Name>CA.Recipe.InterfacesAdapters</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Data\Recipe\" />
+    <Content Include="Data\Recipe\RecipeContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipeContext.edmx</DependentUpon>
+      <LastGenOutput>RecipeContext.cs</LastGenOutput>
+    </Content>
+    <None Include="app.config" />
+    <EntityDeploy Include="Data\Recipe\RecipeContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RecipeContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\Recipe\RecipeContext.edmx.diagram">
+      <DependentUpon>RecipeContext.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <Content Include="Data\Recipe\RecipeContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipeContext.edmx</DependentUpon>
+      <LastGenOutput>RecipeContext.Context.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

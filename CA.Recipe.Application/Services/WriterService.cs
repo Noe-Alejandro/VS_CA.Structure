@@ -1,7 +1,6 @@
 ﻿using CA.Recipe.Application.Exceptions;
 using CA.Recipe.Application.Interfaces;
 using CA.Recipe.Application.Services.Port;
-using System;
 
 namespace CA.Recipe.Application.Services
 {
@@ -17,10 +16,7 @@ namespace CA.Recipe.Application.Services
         {
             ValidateRequest(request);
             RecipeResponseDB gatewayResponse = _iRecipeGateway.InsertRecipe(request);
-            return new RecipeResponse
-            {
-                Id = gatewayResponse.Id
-            };
+            return new RecipeResponse { Id = gatewayResponse.Id };
         }
 
         public bool EditRecipe(int recipeId, RecipeRequest request)

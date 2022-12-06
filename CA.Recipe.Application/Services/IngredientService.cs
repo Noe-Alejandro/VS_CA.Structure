@@ -1,10 +1,7 @@
-﻿using CA.Recipe.Application.Interfaces;
+﻿using CA.Recipe.Application.Helpers;
+using CA.Recipe.Application.Interfaces;
 using CA.Recipe.Application.Services.Port;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CA.Recipe.Application.Services
 {
@@ -18,17 +15,7 @@ namespace CA.Recipe.Application.Services
 
         public List<IngredientResponse> GetAllIngredients()
         {
-            List<IngredientResponseDB> responseGateway = _iIngredientGateway.GetAll();
-            List<IngredientResponse> response = new List<IngredientResponse>();
-            foreach (var ingredient in responseGateway)
-            {
-                response.Add(new IngredientResponse
-                {
-                    IngredientId = ingredient.id,
-                    Name = ingredient.Name
-                });
-            }
-            return response;
+            return MapperHelper.Map<List<IngredientResponse>>(_iIngredientGateway.GetAll());
         }
     }
 }

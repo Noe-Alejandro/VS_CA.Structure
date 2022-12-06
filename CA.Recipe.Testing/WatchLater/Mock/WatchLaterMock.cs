@@ -1,10 +1,8 @@
 ﻿using CA.Recipe.Application.Exceptions;
 using CA.Recipe.Application.Interfaces;
+using CA.Recipe.Application.Services.Port;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CA.Recipe.Testing.WatchLater.Mock
 {
@@ -15,6 +13,11 @@ namespace CA.Recipe.Testing.WatchLater.Mock
             if (userId.Equals(1) && recipeId.Equals(26))
                 throw new AlreadyAddedException("La receta ya se encuentra agregada");
             return;
+        }
+
+        public List<RecipeCoverResponse> ListWatchLater(int userId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

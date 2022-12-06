@@ -70,13 +70,13 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
 
         [HttpGet]
         [Route("~/api/User/ListWatchLater/{id}")]
-        public IHttpActionResult ListWatchLater(int userId)
+        public IHttpActionResult ListWatchLater(int id)
         {
             try
             {
-                _service.ListWatchLater(userId);
+                var response = _service.ListWatchLater(id);
 
-                return Ok();
+                return Content(HttpStatusCode.OK, response);
             }
             catch (Exception e)
             {

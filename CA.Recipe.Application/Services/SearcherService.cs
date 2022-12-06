@@ -17,16 +17,14 @@ namespace CA.Recipe.Application.Services
         {
             if(title == null || title.Trim().Equals(""))
                 throw new InvalidRequestException("Ingrese el título por el que desea buscar");
-            List<RecipeCoverResponse> response = _iRecipeGateway.FindByTitle(title);
-            return response;
+            return _iRecipeGateway.FindByTitle(title); ;
         }
 
         public List<RecipeCoverResponse> SearchRecipeByIngredients(List<int> ingredientIdLst)
         {
             if (ingredientIdLst == null || ingredientIdLst.Count == 0)
                 throw new InvalidRequestException("Ingrese al menos un ingrediente");
-            List<RecipeCoverResponse> response = _iRecipeGateway.FindByIngredients(ingredientIdLst);
-            return response;
+            return _iRecipeGateway.FindByIngredients(ingredientIdLst);
         }
     }
 }

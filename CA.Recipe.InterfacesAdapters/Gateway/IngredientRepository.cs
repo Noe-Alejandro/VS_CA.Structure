@@ -1,10 +1,9 @@
 ﻿using CA.Recipe.Application.Interfaces;
 using CA.Recipe.Application.Services.Port;
 using CA.Recipe.InterfacesAdapters.Data.Recipe;
-using System;
+using CA.Recipe.InterfacesAdapters.Helper;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace CA.Recipe.InterfacesAdapters.Gateway
 {
@@ -18,16 +17,7 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
 
         public List<IngredientResponseDB> GetAll()
         {
-            var lstEntities = _uowRecipe.IngredientRepository.GetAll().ToList();
-            var response = new List<IngredientResponseDB>();
-            foreach (var entities in lstEntities) {
-                response.Add(new IngredientResponseDB
-                {
-                    id = entities.IngredientId,
-                    Name = entities.Name
-                });
-            }
-            return response;
+            return MapperHelperInfra.Map<List<IngredientResponseDB>>(_uowRecipe.IngredientRepository.GetAll().ToList());
         }
     }
 }

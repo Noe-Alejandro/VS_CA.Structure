@@ -29,6 +29,7 @@ namespace CA.Recipe.Application.Services.Port
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public float Score { get; set; }
+        public string Author { get; set; }
     }
 
     public class RecipeDetailResponse

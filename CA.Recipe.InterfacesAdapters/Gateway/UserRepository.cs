@@ -2,10 +2,8 @@
 using CA.Recipe.Application.Interfaces;
 using CA.Recipe.Application.Services.Port;
 using CA.Recipe.InterfacesAdapters.Data.Recipe;
-using System;
-using System.Collections.Generic;
+using CA.Recipe.InterfacesAdapters.Helper;
 using System.Linq;
-using System.Web;
 
 namespace CA.Recipe.InterfacesAdapters.Gateway
 {
@@ -22,12 +20,7 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
             var user = _uowRecipe.UserRepository.Get(x => x.UserId.Equals(userId)).FirstOrDefault();
             if (user == null)
                 throw new EntityNotFoundException("No se encontró el usuario con el id proporcionado");
-            return new UserResponseDB
-            {
-                id = user.UserId,
-                username = user.UserName,
-                email = user.Email
-            };
+            return MapperHelperInfra.Map<UserResponseDB>(user);
         }
 
         public UserResponseDB InsertUser(UserRequest request)
@@ -35,20 +28,10 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
             var userDB = _uowRecipe.UserRepository.Get(x => x.Email.Equals(request.email)).FirstOrDefault();
             if (userDB != null)
                 throw new AlreadyAddedException("Ya se encuentra en uso el correo proporcionado");
-            var user = new User
-            {
-                UserName = request.username,
-                Email = request.email,
-                UserType = 2,
-                Password = request.password,
-                Active = true
-            };
+            var user = MapperHelperInfra.Map<User>(request);
             _uowRecipe.UserRepository.Insert(user);
             _uowRecipe.Save();
-            return new UserResponseDB
-            {
-                id = user.UserId, email = user.Email, password = user.Password, username = user.UserName, usertype = user.UserType
-            };
+            return MapperHelperInfra.Map<UserResponseDB>(user);
         }
 
         public UserResponseDB LoginUser(UserRequest request)
@@ -58,11 +41,7 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
                 throw new EntityNotFoundException("Correo o contraseña inválida");
             if (!user.Password.Equals(request.password))
                 throw new EntityNotFoundException("Correo o contraseña inválida");
-            return new UserResponseDB
-            {
-                id = user.UserId,
-                username = user.UserName
-            };
+            return MapperHelperInfra.Map<UserResponseDB>(user);
         }
 
         public void UpdateUser(int userId, UserEditRequest request)

@@ -2,7 +2,7 @@
 using CA.Recipe.Application.Interfaces;
 using CA.Recipe.Application.Services.Port;
 using CA.Recipe.InterfacesAdapters.Data.Recipe;
-using System;
+using CA.Recipe.InterfacesAdapters.Helper;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,7 +22,7 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
             var recipes = all.FindAll(x => x.Amount.ToList().FindAll(y => ingredientIdLst.Contains(y.IngredientId)).Count >= ingredientIdLst.Count);
             if (recipes == null)
                 return new List<RecipeCoverResponse>();
-            return MapRecipes(recipes);
+            return MapperHelperInfra.Map<List<RecipeCoverResponse>>(recipes);
         }
 
         public List<RecipeCoverResponse> FindByTitle(string title)
@@ -30,13 +30,12 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
             var recipes = _uowRecipe.RecipeRepository.Get(x => x.Title.Contains(title)).ToList();
             if (recipes == null)
                 return new List<RecipeCoverResponse>();
-            return MapRecipes(recipes);
+            return MapperHelperInfra.Map<List<RecipeCoverResponse>>(recipes);
         }
 
         public List<RecipeCoverResponse> GetAllRecipe()
         {
-            var recipesDB = _uowRecipe.RecipeRepository.GetAll().ToList();
-            return MapRecipes(recipesDB);
+            return MapperHelperInfra.Map<List<RecipeCoverResponse>>(_uowRecipe.RecipeRepository.GetAll().ToList());
         }
 
         public RecipeDetailResponse GetRecipe(int id)
@@ -44,47 +43,15 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
             var recipe = _uowRecipe.RecipeRepository.GetByID(id);
             if (recipe == null)
                 throw new EntityNotFoundException("El id de la recta no existe en la base de datos");
-            return new RecipeDetailResponse
-            {
-                RecipeId = recipe.RecipeId,
-                Title = recipe.Title,
-                Description = recipe.Description,
-                ImageUrl = recipe.ImageUrl,
-                Portions = recipe.Portion,
-                Steps = recipe.Step,
-                Score = GetScore(recipe.Score.ToList()),
-                Author = recipe.User.UserName,
-                Ingredients = MapIngredients(recipe.Amount.ToList())
-            };
+            return MapperHelperInfra.Map<RecipeDetailResponse>(recipe);
         }
 
         public RecipeResponseDB InsertRecipe(RecipeRequest recipe)
         {
-            var ingredients = new List<Amount>();
-            foreach (var item in recipe.Ingredients)
-            {
-                ingredients.Add(new Amount
-                {
-                    Amount1 = item.Amount,
-                    IngredientId = item.IngredientId
-                });
-            }
-            var newRecipe = new Data.Recipe.Recipe
-            {
-                UserId = recipe.UserId,
-                Title = recipe.Name,
-                Description = recipe.Description,
-                Amount = ingredients,
-                Step = recipe.Steps,
-                Portion = recipe.Portions,
-                ImageUrl = recipe.Image
-            };
+            var newRecipe = MapperHelperInfra.Map<Data.Recipe.Recipe>(recipe);
             _uowRecipe.RecipeRepository.Insert(newRecipe);
             _uowRecipe.Save();
-            return new RecipeResponseDB
-            {
-                Id = newRecipe.RecipeId,
-            };
+            return new RecipeResponseDB { Id = newRecipe.RecipeId };
         }
 
         public RecipeResponseDB UpdateRecipe(int recipeId, RecipeRequest request)
@@ -112,50 +79,6 @@ namespace CA.Recipe.InterfacesAdapters.Gateway
             _uowRecipe.AmountRepository.InsertByRange(ingredients);
             _uowRecipe.Save();
             return null;
-        }
-
-        private float GetScore(List<Score> scores)
-        {
-            int finalScore = 0;
-            if (scores.Count == 0)
-                return 0;
-            foreach (var score in scores)
-            {
-                finalScore += score.Score1;
-            }
-            return (float)(Math.Truncate((double)((double)finalScore / (double)scores.Count) * 100.0) / 100.0);
-        }
-
-        private List<RecipeCoverResponse> MapRecipes(List<Data.Recipe.Recipe> recipesDB)
-        {
-            var response = new List<RecipeCoverResponse>();
-            foreach (var recipe in recipesDB)
-            {
-                response.Add(new RecipeCoverResponse
-                {
-                    RecipeId = recipe.RecipeId,
-                    Title = recipe.Title,
-                    Description = recipe.Description,
-                    ImageUrl = recipe.ImageUrl,
-                    Score = GetScore(recipe.Score.ToList())
-                });
-            }
-            return response;
-        }
-
-        private List<IngredientAmount> MapIngredients(List<Amount> ingredients)
-        {
-            var mapped = new List<IngredientAmount>();
-            foreach (var ingredient in ingredients)
-            {
-                mapped.Add(new IngredientAmount
-                {
-                    IngredientIdId = ingredient.IngredientId,
-                    Name = ingredient.Ingredient.Name,
-                    Amount = ingredient.Amount1
-                });
-            }
-            return mapped;
         }
     }
 }
