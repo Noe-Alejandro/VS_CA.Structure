@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{1E39B8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{97C7DA37-A7C4-4524-9E0B-DA9719B273CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.Recipe.Testing", "CA.Recipe.Testing\CA.Recipe.Testing.csproj", "{21240820-81C4-45B2-94D2-6C1A5516E0E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CA.Recipe.Testing", "CA.Recipe.Testing\CA.Recipe.Testing.csproj", "{21240820-81C4-45B2-94D2-6C1A5516E0E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

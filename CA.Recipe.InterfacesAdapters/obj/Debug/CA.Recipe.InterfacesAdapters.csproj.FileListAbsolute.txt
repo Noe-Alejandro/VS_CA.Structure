@@ -144,3 +144,6 @@ D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.
 D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\AutoMapper.pdb
 D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\AutoMapper.xml
 D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\System.ValueTuple.xml
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\CA.Recipe.FrameworksDrivers.dll
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\CA.Recipe.FrameworksDrivers.pdb
+D:\Noé\repos\CA\New_CA\VS_CA.Structure\CA.Recipe.InterfacesAdapters\bin\CA.Recipe.FrameworksDrivers.dll.config

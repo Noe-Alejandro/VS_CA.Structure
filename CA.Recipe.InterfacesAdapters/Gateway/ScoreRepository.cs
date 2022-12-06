@@ -1,9 +1,7 @@
 ﻿using CA.Recipe.Application.Interfaces;
-using CA.Recipe.InterfacesAdapters.Data.Recipe;
-using System;
-using System.Collections.Generic;
+using CA.Recipe.FrameworksDrivers;
+using CA.Recipe.FrameworksDrivers.Data.Recipe;
 using System.Linq;
-using System.Web;
 
 namespace CA.Recipe.InterfacesAdapters.Gateway
 {

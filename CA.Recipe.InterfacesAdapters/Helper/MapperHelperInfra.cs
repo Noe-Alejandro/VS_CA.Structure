@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using CA.Recipe.Application.Services.Port;
-using CA.Recipe.InterfacesAdapters.Data.Recipe;
+using CA.Recipe.FrameworksDrivers.Data.Recipe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace CA.Recipe.InterfacesAdapters.Helper
 {
@@ -16,7 +15,7 @@ namespace CA.Recipe.InterfacesAdapters.Helper
         {
             var config = new MapperConfiguration(x =>
             {
-                x.CreateMap<Data.Recipe.Recipe, RecipeDetailResponse>()
+                x.CreateMap<FrameworksDrivers.Data.Recipe.Recipe, RecipeDetailResponse>()
                 .ForMember(dest => dest.Portions, opt => opt.MapFrom(src => src.Portion))
                 .ForMember(dest => dest.Steps, opt => opt.MapFrom(src => src.Step))
                 .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.User.UserName))
@@ -24,11 +23,11 @@ namespace CA.Recipe.InterfacesAdapters.Helper
                 .ForMember(dest => dest.Score, opt => opt.MapFrom(src => GetScore(src.Score.ToList())))
                 .ForMember(dest =>dest.Ingredients, opt => opt.MapFrom(src => MapIngredients(src.Amount.ToList())));
 
-                x.CreateMap<Data.Recipe.Recipe, RecipeCoverResponse>()
+                x.CreateMap<FrameworksDrivers.Data.Recipe.Recipe, RecipeCoverResponse>()
                 .ForMember(dest => dest.Score, opt => opt.MapFrom(src => GetScore(src.Score.ToList())))
                 .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.User.UserName));
 
-                x.CreateMap<RecipeRequest, Data.Recipe.Recipe>()
+                x.CreateMap<RecipeRequest, FrameworksDrivers.Data.Recipe.Recipe>()
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Step, opt => opt.MapFrom(src => src.Steps))
                 .ForMember(dest => dest.Portion, opt => opt.MapFrom(src => src.Portions))

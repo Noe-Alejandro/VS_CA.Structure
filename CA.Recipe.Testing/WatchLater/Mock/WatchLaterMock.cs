@@ -17,7 +17,13 @@ namespace CA.Recipe.Testing.WatchLater.Mock
 
         public List<RecipeCoverResponse> ListWatchLater(int userId)
         {
-            throw new NotImplementedException();
+            if (userId >= 100)
+                throw new EntityNotFoundException("No se encontró el id del usuario");
+            return new List<RecipeCoverResponse>()
+            {
+                new RecipeCoverResponse { RecipeId = 1, Title = "Prueba", Description = "Prueba", ImageUrl = "url", Score = 5.00f, Author = "noeshi" },
+                new RecipeCoverResponse { RecipeId = 2, Title = "Prueba 2", Description = "Prueba 2", ImageUrl = "url2", Score = 4.50f, Author = "pastito" }
+            };
         }
     }
 }

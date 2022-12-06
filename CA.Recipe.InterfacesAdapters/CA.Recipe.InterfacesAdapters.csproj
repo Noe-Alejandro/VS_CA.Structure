@@ -158,41 +158,6 @@
     <Compile Include="Controllers\SearcherController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WriterController.cs" />
-    <Compile Include="Data\GenericRepository.cs" />
-    <Compile Include="Data\Recipe\Amount.cs">
-      <DependentUpon>RecipeContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Recipe\Ingredient.cs">
-      <DependentUpon>RecipeContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Recipe\Recipe.cs">
-      <DependentUpon>RecipeContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Recipe\RecipeContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RecipeContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Recipe\RecipeContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RecipeContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Recipe\RecipeContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RecipeContext.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Recipe\Score.cs">
-      <DependentUpon>RecipeContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Recipe\UoWRecipe.cs" />
-    <Compile Include="Data\Recipe\User.cs">
-      <DependentUpon>RecipeContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Recipe\WatchLater.cs">
-      <DependentUpon>RecipeContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="Gateway\IngredientRepository.cs" />
     <Compile Include="Gateway\RecipeRepository.cs" />
     <Compile Include="Gateway\ScoreRepository.cs" />
@@ -209,29 +174,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Data\Recipe\RecipeContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RecipeContext.edmx</DependentUpon>
-      <LastGenOutput>RecipeContext.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\Recipe\RecipeContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RecipeContext.edmx</DependentUpon>
-      <LastGenOutput>RecipeContext.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Data\Recipe\RecipeContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RecipeContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Data\Recipe\RecipeContext.edmx.diagram">
-      <DependentUpon>RecipeContext.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -286,6 +234,10 @@
     <ProjectReference Include="..\CA.Recipe.Application\CA.Recipe.Application.csproj">
       <Project>{811d982d-8c4e-4d8a-abfa-825a4ccf4a46}</Project>
       <Name>CA.Recipe.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CA.Recipe.FrameworksDrivers\CA.Recipe.FrameworksDrivers.csproj">
+      <Project>{5b751f22-0a03-40a6-910e-c3acb23b27c9}</Project>
+      <Name>CA.Recipe.FrameworksDrivers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

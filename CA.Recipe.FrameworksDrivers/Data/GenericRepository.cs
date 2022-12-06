@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace CA.Recipe.InterfacesAdapters.Data
+namespace CA.Recipe.FrameworksDrivers
 {
     public class GenericRepository<TEntity> where TEntity : class
     {

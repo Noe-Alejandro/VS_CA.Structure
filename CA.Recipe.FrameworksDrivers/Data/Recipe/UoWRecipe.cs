@@ -1,6 +1,7 @@
-﻿using System;
+﻿using CA.Recipe.FrameworksDrivers.Data.Recipe;
+using System;
 
-namespace CA.Recipe.InterfacesAdapters.Data.Recipe
+namespace CA.Recipe.FrameworksDrivers
 {
     public class UoWRecipe : IDisposable
     {
@@ -9,7 +10,7 @@ namespace CA.Recipe.InterfacesAdapters.Data.Recipe
             Context = new RecipeContext();
             AmountRepository = new GenericRepository<Amount>(Context);
             IngredientRepository = new GenericRepository<Ingredient>(Context);
-            RecipeRepository = new GenericRepository<Recipe>(Context);
+            RecipeRepository = new GenericRepository<Data.Recipe.Recipe>(Context);
             ScoreRepository = new GenericRepository<Score>(Context);
             UserRepository = new GenericRepository<User>(Context);
             WatchLaterRepository = new GenericRepository<WatchLater>(Context);
@@ -17,7 +18,7 @@ namespace CA.Recipe.InterfacesAdapters.Data.Recipe
         public RecipeContext Context { get; set; }
         public GenericRepository<Amount> AmountRepository { get; set; }
         public GenericRepository<Ingredient> IngredientRepository { get; set; }
-        public GenericRepository<Recipe> RecipeRepository { get; set; }
+        public GenericRepository<Data.Recipe.Recipe> RecipeRepository { get; set; }
         public GenericRepository<Score> ScoreRepository { get; set; }
         public GenericRepository<User> UserRepository { get; set; }
 
