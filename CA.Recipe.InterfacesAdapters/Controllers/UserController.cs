@@ -69,6 +69,22 @@ namespace CA.Recipe.InterfacesAdapters.Controllers
         }
 
         [HttpGet]
+        [Route("~/api/User/ListWatchLater/{id}")]
+        public IHttpActionResult ListWatchLater(int userId)
+        {
+            try
+            {
+                _service.ListWatchLater(userId);
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
+
+        [HttpGet]
         [Route("~/api/User/{id}")]
         public IHttpActionResult GetUser(int id)
         {

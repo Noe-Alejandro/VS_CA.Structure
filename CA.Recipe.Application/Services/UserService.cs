@@ -1,6 +1,7 @@
 ﻿using CA.Recipe.Application.Exceptions;
 using CA.Recipe.Application.Interfaces;
 using CA.Recipe.Application.Services.Port;
+using System.Collections.Generic;
 
 namespace CA.Recipe.Application.Services
 {
@@ -34,6 +35,11 @@ namespace CA.Recipe.Application.Services
                 throw new InvalidRequestException("Ingrese un id de receta válido");
             _iWatchLaterGateway.AddWatchLater(userId, recipeId);
             return;
+        }
+
+        public List<RecipeCoverResponse> ListWatchLater(int userId)
+        {
+            return _iWatchLaterGateway.ListWatchLater(userId);
         }
 
         public UserGetResponse GetUser(int userId)
